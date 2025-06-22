@@ -1,2 +1,3 @@
 *.swp
 chart/docker-auth/Chart.lock
+/.idea/
