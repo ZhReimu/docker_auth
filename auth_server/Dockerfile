@@ -6,6 +6,11 @@ ARG BUILD_ID
 ENV BUILD_ID="${BUILD_ID}"
 ARG CGO_EXTRA_CFLAGS
 
+# 换源
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+
+RUN go env -w GO111MODULE=on && go env -w  GOPROXY=https://goproxy.cn,direct
+
 RUN apk add -U --no-cache ca-certificates make git gcc musl-dev binutils-gold
 
 COPY . /build
